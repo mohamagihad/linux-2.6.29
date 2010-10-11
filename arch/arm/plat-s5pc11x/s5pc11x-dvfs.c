@@ -46,11 +46,11 @@
 unsigned int dvfs_change_direction;
 #define CLIP_LEVEL(a, b) (a > b ? b : a)
 
-unsigned int MAXFREQ_LEVEL_SUPPORTED = 7;
-unsigned int S5PC11X_MAXFREQLEVEL = 7;
+unsigned int MAXFREQ_LEVEL_SUPPORTED = 8;
+unsigned int S5PC11X_MAXFREQLEVEL = 8;
 unsigned int S5PC11X_FREQ_TAB;
 //static spinlock_t g_cpufreq_lock = SPIN_LOCK_UNLOCKED;
-static unsigned int s5pc11x_cpufreq_level = 7;
+static unsigned int s5pc11x_cpufreq_level = 8;
 unsigned int s5pc11x_cpufreq_index = 1;
 
 static char cpufreq_governor_name[CPUFREQ_NAME_LEN] = "conservative";// default governor
@@ -80,14 +80,15 @@ extern unsigned int gbTransitionLogEnable;
 
 /* frequency */
 static struct cpufreq_frequency_table s5pc110_freq_table_1GHZ[] = {	
-        {0, 1400*1000},	
-        {1, 1200*1000},
-	{2, 1000*1000},
-	{3, 800*1000},
-	{4, 600*1000},
-	{5, 400*1000},
-	{6, 200*1000},
-	{7, 100*1000},
+        {0, 1400*1000},        
+        {1, 1300*1000},	
+        {2, 1200*1000},
+	{3, 1000*1000},
+	{4, 800*1000},
+	{5, 600*1000},
+	{6, 400*1000},
+	{7, 200*1000},
+	{8, 100*1000},
 	{0, CPUFREQ_TABLE_END},
 };
 
@@ -747,8 +748,8 @@ static int __init s5pc110_cpu_init(struct cpufreq_policy *policy)
 	if(s5pc110_verion==1){
 		printk("%s, EVT1 1Ghz Enable\n",__func__);
 		S5PC11X_FREQ_TAB = 0;
-		S5PC11X_MAXFREQLEVEL = 7;
-		MAXFREQ_LEVEL_SUPPORTED = 7;
+		S5PC11X_MAXFREQLEVEL = 8;
+		MAXFREQ_LEVEL_SUPPORTED = 8;
 		g_dvfs_high_lock_limit = 4;
 	}
 	else
