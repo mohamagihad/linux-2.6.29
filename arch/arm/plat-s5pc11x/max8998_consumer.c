@@ -94,7 +94,7 @@ static const unsigned int frequency_match_1GHZ[][2] = {
         {200000, 1250, 1100, 4},
         {100000, 950, 1000, 5},
 #endif
-};       {0, DVSARM1, DVSINT1},//DVSINT0
+};
 
 static const unsigned int frequency_match_800MHZ[][2] = {
 /* frequency, Mathced VDD ARM voltage , Matched VDD INT*/
